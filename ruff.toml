@@ -1,27 +1,19 @@
-# ruff.toml
+target-version = "py312"  # 프로젝트의 Python 버전에 맞춤
+line-length = 88
+unsafe-fixes = true     # 자동 수정 허용
+show-fixes = true       # 적용된 수정사항 표시
 
-# 활성화할 Ruff 규칙
 [lint]
 select = ["E", "F", "I"]
 ignore = []
 
-# Jupyter Notebook 파일도 확인할 수 있도록 설정
-extend-include = ["*.ipynb"]
-# Jupyter Notebook 셀에서 코드 분석
-target-version = "py312"  # 프로젝트의 Python 버전에 맞춤
-
-# Black과 유사한 포맷팅 설정
 [format]
-# 라인 길이 제한 (Black의 기본값)
-line-length = 88
-# 따옴표 스타일: 큰따옴표 우선하게 설정
 quote-style = "double"
-# 문자열 내부에 쌍따옴표가 있으면 홑따옴표로 자동 변환
-docstring-code-format = true
-# 대부분의 문맥에서 후행 쉼표 추가
 indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
 
-# isort 설정과 유사한 구성
+
 [lint.isort]
 # isort의 profile을 black으로 설정
 force-single-line = false
@@ -32,19 +24,9 @@ known-first-party = ["notebooks"]
 lines-after-imports = 2
 section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
 
-# Python 버전 설정
-[lint.pycodestyle]
-max-line-length = 88
-
 # Jupyter Notebook 관련 특별 설정
 [lint.per-file-ignores]
 "*.ipynb" = [
     "E402",   # 모듈 레벨 임포트가 코드 맨 위에 없어도 됨 (노트북 특성상)
-    "E501",   # 노트북에서는 긴 줄도 허용
-    "F401",   # 사용하지 않는 임포트 무시 (노트북 특성상 필요할 수 있음)
-    "F821",   # 정의되지 않은 변수 무시 (노트북의 셀 간 변수 공유 특성 때문)
     "F841",   # 할당 후 사용되지 않는 변수 무시
-    "I001"    # 임포트 정렬 무시 (노트북에서는 셀 단위로 작업하므로)
 ]
-"__init__.py" = ["F401"]  # 사용하지 않는 임포트 무시
-"**/test_*.py" = ["E501"] # 테스트 파일에서 라인 길이 제한 무시
