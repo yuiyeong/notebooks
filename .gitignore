@@ -113,3 +113,7 @@ Thumbs.db
 
 # Ruff cache
 .ruff_cache/
+data/review.csv
+data/amazon_review1.csv
+data/Small_and_Big.csv
+data/fin_statement_new.csv
