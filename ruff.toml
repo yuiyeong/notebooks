@@ -98,6 +98,7 @@ section-order = ["future", "standard-library", "third-party", "first-party", "lo
     "PTH123", # open() 대신 Path.open() 사용 무시
     "RUF003", # collections.abc 모듈의 타입 사용 권장 무시
     "PD901", # DataFrame 변수명 관련 경고 무시
+    "N806", # 대문자 변수명 무시
     "N813", # 카멜케이스 변수명 무시
     "PLR2004", # 매직 넘버 사용 무시
     "RUF001", # ambiguous 문자가 포함 된 것 무시
