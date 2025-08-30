@@ -117,3 +117,6 @@ data/review.csv
 data/amazon_review1.csv
 data/Small_and_Big.csv
 data/fin_statement_new.csv
+private
+data/bank_transactions
+data/chroma_db

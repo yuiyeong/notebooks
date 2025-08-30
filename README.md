@@ -1,59 +1,103 @@
-# Jupyter Notebooks 프로젝트
+# Notebooks As Sandbox
 
-이 저장소는 python 으로 진행하는 다양한 작업을 위한 주피터 노트북을 모아두는 프로젝트입니다.
+이 저장소는 노트북을 이용해 새로운 개념을 빠르게 실험하고, 아주 가벼운 PoC를 해보는 개인용 샌드박스입니다.
 
-## 환경 설정
+복잡한 구조나 배포를 목표로 하지 않으며, 아이디어 검증과 학습에 초점을 둡니다.
 
-이 프로젝트는 Python 3.12와 Poetry를 사용하여 의존성을 관리합니다.
+## Getting Started
 
-### 설치 방법
+### Prerequisites
 
-1. Poetry 설치 (아직 설치하지 않은 경우):
-   ```bash
-   pip install poetry
-   ```
+- Python 3.12.x
+- pyenv 설치 및 기본 사용법
+- 선택 사항
+    - JupyterLab 또는 Jupyter Notebook
+    - ffmpeg(오디오/비디오 처리 실험 시)
+    - Chrome/ChromeDriver(웹 자동화/스크래핑 실험 시)
 
-2. 의존성 설치:
-   ```bash
-   poetry install
-   ```
+### Installation
 
-3. 주피터 노트북 설치 및 실행:
-   ```bash
-   poetry add jupyter
-   poetry run jupyter notebook
-   ```
+1) pyenv로 Python 3.12 설치 및 프로젝트에 지정
 
-## 기능
+    ```bash
+    pyenv install 3.12.11
+    pyenv local 3.12.11
+    python -V  # Python 3.12.11 확인
+    ```
 
-이 저장소에는 다음과 같은 패키지가 포함되어 있습니다:
+2) Poetry 설치
 
-- **데이터 처리**: numpy, pandas
-- **시각화**: matplotlib, seaborn
-- **웹 스크래핑**: selenium, webdriver-manager
-- **이미지 처리**: pillow
-- **API 연동**: requests, notion-client
-- **Notion 연동**: notion-client, notion2md
-- **환경 설정**: python-dotenv
+    - 공식 설치 스크립트(권장)
 
-## 코드 스타일
+         ```bash
+         curl -sSL https://install.python-poetry.org | python3 -
+         # 설치 경로를 PATH에 추가 (쉘에 따라 한 줄 추가)
+         # bash/zsh: echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc  # 또는 ~/.zshrc
+         # fish: set -U fish_user_paths $HOME/.local/bin $fish_user_paths
+         ```
 
-이 프로젝트는 코드 스타일을 위해 Ruff를 사용합니다:
-- Black 스타일
-- isort 스타일
+    - 설치 확인
 
-### 린트 실행
+        ```bash
+        poetry --version
+        ```
 
-```bash
-poetry run ruff check .
-```
+3) Poetry를 pyenv Python으로 가상환경 생성하도록 설정
 
-### 포맷팅 실행
+    ```bash
+    # 프로젝트 루트에서 실행
+    poetry env use 3.12.11   # 또는: poetry env use $(pyenv which python)
+    poetry config virtualenvs.in-project true
+    ```
 
-```bash
-poetry run ruff format .
-```
+4) 의존성 설치
 
-## 라이선스
+    - 기본 의존성만
 
-내부 사용 목적으로 작성되었습니다.
+        ```bash
+        poetry install
+        ```
+
+    - 노트북/개발 도구까지 함께
+
+        ```bash
+        poetry install --extras dev
+        ```
+
+5) 가상환경 활성화 및 확인
+
+    ```bash
+    poetry shell
+    python -V
+    ```
+
+## Usage
+
+- JupyterLab 실행
+  ```bash
+  jupyter lab
+  ```
+  또는
+  ```bash
+  jupyter notebook
+  ```
+
+## Code Style
+
+- 간단한 샌드박스지만, 기본 코드 품질 유지를 위해 Ruff를 권장합니다.
+    - 설치
+      ```bash
+      pip install ruff pre-commit
+      ```
+    - 린트
+      ```bash
+      ruff check .
+      ```
+    - 포맷팅
+      ```bash
+      ruff format .
+      ```
+    - 선택: 커밋 전 자동 체크
+      ```bash
+      pre-commit install
+      ```
