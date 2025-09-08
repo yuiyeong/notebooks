@@ -120,3 +120,6 @@ data/fin_statement_new.csv
 private
 data/bank_transactions
 data/chroma_db
+data/temp*
+data/startup_allowance_notifications.pdf
+data/startup_allowance_guide_books.pdf
